@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.*;
 
 @Entity
+@Table(name="Participant")
 public class Participant {
 
 	private String email;
@@ -15,6 +16,9 @@ public class Participant {
 	private String prenom;
 	private ArrayList<Sondage> sondage;
 	private ArrayList<Reunion> reunion;
+	private ArrayList<Preferences> preferences;
+	private ArrayList<Allergies> allergies;
+	private Mail mail;
 	
 	public Participant() {
 		
@@ -26,6 +30,9 @@ public class Participant {
 		this.prenom = prenom;
 		reunion = new ArrayList<Reunion>();
 		sondage = new ArrayList<Sondage>();
+		preferences = new ArrayList<Preferences>();
+		allergies = new ArrayList<Allergies>();
+		mail = new Mail();
 	}
 	
 	@Id
@@ -59,6 +66,7 @@ public class Participant {
 	}
 	
 	@ManyToMany
+	@JoinTable(name="Participants_Réunion", joinColumns=@JoinColumn(name="Participant"), inverseJoinColumns=@JoinColumn(name="Réunion"))
 	public ArrayList<Reunion> getReunion() {
 		return reunion;
 	}
@@ -71,4 +79,33 @@ public class Participant {
 	public ArrayList<Sondage> getSondage() {
 		return sondage;
 	}
+	
+	public void setAllergies(ArrayList<Allergies> allergies) {
+		this.allergies = allergies;
+	}
+	
+	@ManyToMany
+	@JoinTable(name="Participants_Allergies", joinColumns=@JoinColumn(name="Participant"), inverseJoinColumns=@JoinColumn(name="Allergie"))
+	public ArrayList<Allergies> getAllergies() {
+		return allergies;
+	}
+	
+	public void setPreferences(ArrayList<Preferences> preferences) {
+		this.preferences = preferences;
+	}
+	
+	@ManyToMany
+	@JoinTable(name="Participants_Preferences", joinColumns=@JoinColumn(name="Participant"), inverseJoinColumns=@JoinColumn(name="Preference"))
+	public ArrayList<Preferences> getPreferences() {
+		return preferences;
+	}
+	
+	/**public void setMail(Mail mail) {
+		this.mail = mail;
+	}
+	
+	@OneToOne
+	public Mail getMail() {
+		return mail;
+	}*/
 }

@@ -2,6 +2,7 @@ package jpa;
 import javax.persistence.*;
 
 @Entity
+@Table(name="Mail")
 public class Mail {
 	
 	private Participant participant;

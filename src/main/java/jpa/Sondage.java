@@ -3,6 +3,7 @@ package jpa;
 import javax.persistence.*;
 
 @Entity
+@Table(name="Sondage")
 public class Sondage {
 	
 	private long id;

@@ -3,6 +3,7 @@ package jpa;
 import javax.persistence.*;
 
 @Entity
+@Table(name="Preferences")
 public class Preferences {
 
 	private Long id;
@@ -40,7 +41,7 @@ public class Preferences {
 		this.participant = participant;
 	}
 	
-	@ManyToOne
+	@ManyToMany(mappedBy = "participants")
 	public Participant getParticipant() {
 		return participant;
 	}

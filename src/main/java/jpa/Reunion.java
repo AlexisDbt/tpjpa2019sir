@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.persistence.*;
 
 @Entity
+@Table(name="Reunion")
 public class Reunion {
 	
 	private int id;
@@ -14,6 +15,7 @@ public class Reunion {
 	private ArrayList<Participant> invites;
 	private ArrayList<Participant> participants;
 	private ArrayList<Participant> peigneCuls;
+	private Sondage sondage;
 	
 	public Reunion() {
 		
@@ -26,6 +28,7 @@ public class Reunion {
 		this.invites = new ArrayList<Participant>();
 		this.participants = new ArrayList<Participant>();
 		this.peigneCuls = new ArrayList<Participant>();		
+		sondage = new Sondage();
 	}
 	
 	@Id
@@ -88,5 +91,15 @@ public class Reunion {
 	public String getResume() {
 		return resume;
 	}
+	
+	public void setSondage(Sondage sondage) {
+		this.sondage = sondage;
+	}
+	
+	@OneToOne
+	public Sondage getSondage() {
+		return sondage;
+	}
+	
 	
 }
