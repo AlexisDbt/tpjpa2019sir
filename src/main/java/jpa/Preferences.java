@@ -6,8 +6,11 @@ import javax.persistence.*;
 @Table(name="Preferences")
 public class Preferences {
 
+	@Id
+	@GeneratedValue
 	private Long id;
 	private String libelle;
+	@ManyToMany(mappedBy = "participants")
 	private Participant participant;
 	
 	public Preferences () {
@@ -20,8 +23,6 @@ public class Preferences {
 		participant = new Participant();
 	}
 	
-	@Id
-	@GeneratedValue
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -42,7 +43,6 @@ public class Preferences {
 		this.participant = participant;
 	}
 	
-	@ManyToMany(mappedBy = "participants")
 	public Participant getParticipant() {
 		return participant;
 	}

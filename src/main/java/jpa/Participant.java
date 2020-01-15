@@ -11,12 +11,21 @@ import javax.persistence.*;
 @Table(name="Participant")
 public class Participant {
 
+	@Id
+	@GeneratedValue
 	private String email;
 	private String nom;
 	private String prenom;
+	@OneToMany
 	private ArrayList<Sondage> sondage;
+	@ManyToMany
+	@JoinTable(name="Participants_Réunion", joinColumns=@JoinColumn(name="Participant"), inverseJoinColumns=@JoinColumn(name="Réunion"))
 	private ArrayList<Reunion> reunion;
+	@ManyToMany
+	@JoinTable(name="Participants_Preferences", joinColumns=@JoinColumn(name="Participant"), inverseJoinColumns=@JoinColumn(name="Preference"))
 	private ArrayList<Preferences> preferences;
+	@ManyToMany
+	@JoinTable(name="Participants_Allergies", joinColumns=@JoinColumn(name="Participant"), inverseJoinColumns=@JoinColumn(name="Allergie"))
 	private ArrayList<Allergies> allergies;
 	private Mail mail;
 	
@@ -35,8 +44,6 @@ public class Participant {
 		mail = new Mail();
 	}
 	
-	@Id
-	@GeneratedValue
 	public void setEmail(String email) {
 		this.email = email;
 	}
@@ -65,8 +72,6 @@ public class Participant {
 		this.reunion = reunion;
 	}
 	
-	@ManyToMany
-	@JoinTable(name="Participants_Réunion", joinColumns=@JoinColumn(name="Participant"), inverseJoinColumns=@JoinColumn(name="Réunion"))
 	public ArrayList<Reunion> getReunion() {
 		return reunion;
 	}
@@ -75,7 +80,6 @@ public class Participant {
 		this.sondage = sondage;
 	}
 	
-	@OneToMany
 	public ArrayList<Sondage> getSondage() {
 		return sondage;
 	}
@@ -84,8 +88,6 @@ public class Participant {
 		this.allergies = allergies;
 	}
 	
-	@ManyToMany
-	@JoinTable(name="Participants_Allergies", joinColumns=@JoinColumn(name="Participant"), inverseJoinColumns=@JoinColumn(name="Allergie"))
 	public ArrayList<Allergies> getAllergies() {
 		return allergies;
 	}
@@ -94,8 +96,6 @@ public class Participant {
 		this.preferences = preferences;
 	}
 	
-	@ManyToMany
-	@JoinTable(name="Participants_Preferences", joinColumns=@JoinColumn(name="Participant"), inverseJoinColumns=@JoinColumn(name="Preference"))
 	public ArrayList<Preferences> getPreferences() {
 		return preferences;
 	}

@@ -5,11 +5,15 @@ import javax.persistence.*;
 @Table(name="Mail")
 public class Mail {
 	
+	@OneToMany
 	private Participant participant;
+	@OneToMany
 	private Reunion reunion;
 	private String lienPause;
 	private String code;
 	private String lienPad;
+	@Id
+	@GeneratedValue
 	private Long id;
 	
 	public Mail() {
@@ -54,7 +58,6 @@ public class Mail {
 		this.participant = participant;
 	}
 	
-	@OneToMany
 	public Participant getParticipant() {
 		return participant;
 	}
@@ -63,13 +66,10 @@ public class Mail {
 		this.reunion = reunion;
 	}
 	
-	@OneToMany
 	public Reunion getReunion() {
 		return reunion;
 	}
 	
-	@Id
-	@GeneratedValue
 	public void setId(Long id) {
 		this.id = id;
 	}

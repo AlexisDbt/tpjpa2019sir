@@ -8,13 +8,19 @@ import javax.persistence.*;
 @Table(name="Reunion")
 public class Reunion {
 	
+	@Id
+	@GeneratedValue
 	private int id;
 	private String intitule;
 	private String resume;
 	private Date date;
+	@OneToMany
 	private ArrayList<Participant> invites;
+	@OneToMany
 	private ArrayList<Participant> participants;
+	@OneToMany
 	private ArrayList<Participant> peigneCuls;
+	@OneToOne
 	private Sondage sondage;
 	
 	public Reunion() {
@@ -31,8 +37,6 @@ public class Reunion {
 		sondage = new Sondage();
 	}
 	
-	@Id
-	@GeneratedValue
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -61,7 +65,6 @@ public class Reunion {
 		this.invites = invites;
 	}
 	
-	@OneToMany
 	public ArrayList<Participant> getInvites() {
 		return invites;
 	}
@@ -70,7 +73,6 @@ public class Reunion {
 		this.participants = participants;
 	}
 	
-	@OneToMany
 	public ArrayList<Participant> getParticipants() {
 		return participants;
 	}
@@ -79,7 +81,6 @@ public class Reunion {
 		this.peigneCuls = peigneCuls;
 	}
 	
-	@OneToMany
 	public ArrayList<Participant> getPeigneCuls() {
 		return peigneCuls;
 	}
@@ -96,7 +97,6 @@ public class Reunion {
 		this.sondage = sondage;
 	}
 	
-	@OneToOne
 	public Sondage getSondage() {
 		return sondage;
 	}

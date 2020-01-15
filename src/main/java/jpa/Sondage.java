@@ -6,9 +6,13 @@ import javax.persistence.*;
 @Table(name="Sondage")
 public class Sondage {
 	
+	@Id
+	@GeneratedValue
 	private long id;
 	private String lienWeb;
+	@ManyToOne
 	private Participant createur;
+	@OneToOne
 	private Reunion reunion;
 	
 	public Sondage() {
@@ -26,13 +30,10 @@ public class Sondage {
 		this.createur = createur;
 	}
 	
-	@ManyToOne
 	public Participant getCreateur() {
 		return createur;
 	}
 	
-	@Id
-	@GeneratedValue
 	public void setId(long id) {
 		this.id = id;
 	}
@@ -53,7 +54,6 @@ public class Sondage {
 		this.reunion = reunion;
 	}
 	
-	@OneToOne
 	public Reunion getReunion() {
 		return reunion;
 	}
