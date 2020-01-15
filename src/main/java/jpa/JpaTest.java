@@ -59,10 +59,7 @@ public class JpaTest {
 	
 	
 	public void createParticipant(String email, String nom, String prenom) {
-		int numPart = manager.createQuery("Select x From Participant x", Participant.class).getResultList().size();
-		if(numPart == 0) {
-			manager.persist(new Participant(email, nom, prenom));
-		}
+		
 	}
 	
 	public void createSondage() {

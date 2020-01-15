@@ -1,5 +1,7 @@
 package jpa;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.ArrayList;
 
 import javax.persistence.*;
@@ -14,14 +16,16 @@ public class Reunion {
 	private String intitule;
 	private String resume;
 	private Date date;
-	@OneToMany
-	private ArrayList<Participant> invites;
-	@OneToMany
-	private ArrayList<Participant> participants;
-	@OneToMany
-	private ArrayList<Participant> peigneCuls;
+	@ManyToMany
+	private Set<Participant> invites;
+	@ManyToMany
+	private Set<Participant> participants;
+	@ManyToMany
+	private Set<Participant> peigneCuls;
 	@OneToOne
 	private Sondage sondage;
+	@ManyToOne
+	private Mail mail;
 	
 	public Reunion() {
 		
@@ -31,9 +35,9 @@ public class Reunion {
 		this.intitule = intitule;
 		this.resume = resume;
 		this.date = date;
-		this.invites = new ArrayList<Participant>();
-		this.participants = new ArrayList<Participant>();
-		this.peigneCuls = new ArrayList<Participant>();		
+		this.invites = new HashSet<Participant>();
+		this.participants = new HashSet<Participant>();
+		this.peigneCuls = new HashSet<Participant>();		
 		sondage = new Sondage();
 	}
 	
@@ -61,27 +65,27 @@ public class Reunion {
 		return intitule;
 	}
 	
-	public void setInvites(ArrayList<Participant> invites) {
+	public void setInvites(Set<Participant> invites) {
 		this.invites = invites;
 	}
 	
-	public ArrayList<Participant> getInvites() {
+	public Set<Participant> getInvites() {
 		return invites;
 	}
 	
-	public void setParticipants(ArrayList<Participant> participants) {
+	public void setParticipants(Set<Participant> participants) {
 		this.participants = participants;
 	}
 	
-	public ArrayList<Participant> getParticipants() {
+	public Set<Participant> getParticipants() {
 		return participants;
 	}
 	
-	public void setPeigneCuls(ArrayList<Participant> peigneCuls) {
+	public void setPeigneCuls(Set<Participant> peigneCuls) {
 		this.peigneCuls = peigneCuls;
 	}
 	
-	public ArrayList<Participant> getPeigneCuls() {
+	public Set<Participant> getPeigneCuls() {
 		return peigneCuls;
 	}
 	

@@ -1,6 +1,7 @@
 package jpa;
 
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,17 +17,15 @@ public class Participant {
 	private String email;
 	private String nom;
 	private String prenom;
-	@OneToMany
-	private ArrayList<Sondage> sondage;
-	@ManyToMany
-	@JoinTable(name="Participants_Réunion", joinColumns=@JoinColumn(name="Participant"), inverseJoinColumns=@JoinColumn(name="Réunion"))
-	private ArrayList<Reunion> reunion;
-	@ManyToMany
-	@JoinTable(name="Participants_Preferences", joinColumns=@JoinColumn(name="Participant"), inverseJoinColumns=@JoinColumn(name="Preference"))
-	private ArrayList<Preferences> preferences;
-	@ManyToMany
-	@JoinTable(name="Participants_Allergies", joinColumns=@JoinColumn(name="Participant"), inverseJoinColumns=@JoinColumn(name="Allergie"))
-	private ArrayList<Allergies> allergies;
+	@OneToMany(mappedBy="createur")
+	private Set<Sondage> sondage;
+	@ManyToMany(mappedBy="participants")
+	private Set<Reunion> reunion;
+	@ManyToMany(mappedBy="participant")	
+	private Set<Preferences> preferences;
+	@ManyToMany(mappedBy="participant")
+	private Set<Allergies> allergies;
+	@ManyToOne
 	private Mail mail;
 	
 	public Participant() {
@@ -37,10 +36,10 @@ public class Participant {
 		this.email = email;
 		this.nom = nom;
 		this.prenom = prenom;
-		reunion = new ArrayList<Reunion>();
-		sondage = new ArrayList<Sondage>();
-		preferences = new ArrayList<Preferences>();
-		allergies = new ArrayList<Allergies>();
+		reunion = new HashSet<Reunion>();
+		sondage = new HashSet<Sondage>();
+		preferences = new HashSet<Preferences>();
+		allergies = new HashSet<Allergies>();
 		mail = new Mail();
 	}
 	
@@ -68,35 +67,35 @@ public class Participant {
 		return prenom;
 	}
 	
-	public void setReunion(ArrayList<Reunion> reunion) {
+	public void setReunion(Set<Reunion> reunion) {
 		this.reunion = reunion;
 	}
 	
-	public ArrayList<Reunion> getReunion() {
+	public Set<Reunion> getReunion() {
 		return reunion;
 	}
 	
-	public void setSondage(ArrayList<Sondage> sondage) {
+	public void setSondage(Set<Sondage> sondage) {
 		this.sondage = sondage;
 	}
 	
-	public ArrayList<Sondage> getSondage() {
+	public Set<Sondage> getSondage() {
 		return sondage;
 	}
 	
-	public void setAllergies(ArrayList<Allergies> allergies) {
+	public void setAllergies(Set<Allergies> allergies) {
 		this.allergies = allergies;
 	}
 	
-	public ArrayList<Allergies> getAllergies() {
+	public Set<Allergies> getAllergies() {
 		return allergies;
 	}
 	
-	public void setPreferences(ArrayList<Preferences> preferences) {
+	public void setPreferences(Set<Preferences> preferences) {
 		this.preferences = preferences;
 	}
 	
-	public ArrayList<Preferences> getPreferences() {
+	public Set<Preferences> getPreferences() {
 		return preferences;
 	}
 	

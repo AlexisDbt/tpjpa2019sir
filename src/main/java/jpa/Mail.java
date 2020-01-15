@@ -1,14 +1,18 @@
 package jpa;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name="Mail")
 public class Mail {
 	
-	@OneToMany
-	private Participant participant;
-	@OneToMany
-	private Reunion reunion;
+	@OneToMany(mappedBy="mail")
+	private Set<Participant> participant;
+	@OneToMany(mappedBy="mail")
+	private Set<Reunion> reunion;
 	private String lienPause;
 	private String code;
 	private String lienPad;
@@ -25,8 +29,8 @@ public class Mail {
 		this.lienPad = lienPad;
 		this.lienPause = lienPause;
 		this.id = id;
-		participant = new Participant();
-		reunion = new Reunion();
+		participant = new HashSet<Participant>();
+		reunion = new HashSet<Reunion>();
 	}
 	
 	public void setCode(String code) {
@@ -54,19 +58,19 @@ public class Mail {
 	}
 	
 	
-	public void setParticipant(Participant participant) {
+	public void setParticipant(Set<Participant> participant) {
 		this.participant = participant;
 	}
 	
-	public Participant getParticipant() {
+	public Set<Participant> getParticipant() {
 		return participant;
 	}
 	
-	public void setReunion(Reunion reunion) {
+	public void setReunion(Set<Reunion> reunion) {
 		this.reunion = reunion;
 	}
 	
-	public Reunion getReunion() {
+	public Set<Reunion> getReunion() {
 		return reunion;
 	}
 	

@@ -1,5 +1,9 @@
 package jpa;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,8 +14,8 @@ public class Preferences {
 	@GeneratedValue
 	private Long id;
 	private String libelle;
-	@ManyToMany(mappedBy = "participants")
-	private Participant participant;
+	@ManyToMany
+	private Set<Participant> participant;
 	
 	public Preferences () {
 		
@@ -20,7 +24,7 @@ public class Preferences {
 	public Preferences (Long id, String libelle) {
 		this.id = id;
 		this.libelle = libelle;
-		participant = new Participant();
+		participant = new HashSet<Participant>();
 	}
 	
 	public void setId(Long id) {
@@ -39,11 +43,11 @@ public class Preferences {
 		return libelle;
 	}
 	
-	public void setParticipant(Participant participant) {
+	public void setParticipant(Set<Participant> participant) {
 		this.participant = participant;
 	}
 	
-	public Participant getParticipant() {
+	public Set<Participant> getParticipant() {
 		return participant;
 	}
 }
