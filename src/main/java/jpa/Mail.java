@@ -69,6 +69,7 @@ public class Mail {
 	}
 	
 	@Id
+	@GeneratedValue
 	public void setId(Long id) {
 		this.id = id;
 	}

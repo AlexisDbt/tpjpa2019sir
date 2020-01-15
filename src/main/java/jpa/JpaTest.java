@@ -38,14 +38,14 @@ public class JpaTest {
 		//		factory.close();
 		 * 
 		 */
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("example");
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("dev");
 			EntityManager manager = factory.createEntityManager();
 			JpaTest test = new JpaTest(manager);
 
 			EntityTransaction tx = manager.getTransaction();
 			tx.begin();
 			try {
-				test.createParticipant("mescouilles@gmail.com", "oui", "Chapon");
+				test.createParticipant("test@gmail.com", "nom", "prenom");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

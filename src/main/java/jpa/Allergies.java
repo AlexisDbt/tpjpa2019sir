@@ -21,6 +21,7 @@ public class Allergies {
 	}
 	
 	@Id
+	@GeneratedValue
 	public void setId(Long id) {
 		this.id = id;
 	}

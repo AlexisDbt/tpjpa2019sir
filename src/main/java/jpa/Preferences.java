@@ -21,6 +21,7 @@ public class Preferences {
 	}
 	
 	@Id
+	@GeneratedValue
 	public void setId(Long id) {
 		this.id = id;
 	}
