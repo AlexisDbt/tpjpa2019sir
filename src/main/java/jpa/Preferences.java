@@ -1,6 +1,5 @@
 package jpa;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,7 +13,7 @@ public class Preferences {
 	@GeneratedValue
 	private Long id;
 	private String libelle;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private Set<Participant> participant;
 	
 	public Preferences () {

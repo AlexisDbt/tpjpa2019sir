@@ -9,9 +9,9 @@ import javax.persistence.*;
 @Table(name="Mail")
 public class Mail {
 	
-	@OneToMany(mappedBy="mail")
+	@OneToMany(mappedBy="mail", cascade = CascadeType.ALL)
 	private Set<Participant> participant;
-	@OneToMany(mappedBy="mail")
+	@OneToMany(mappedBy="mail", cascade = CascadeType.ALL)
 	private Set<Reunion> reunion;
 	private String lienPause;
 	private String code;

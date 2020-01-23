@@ -14,7 +14,7 @@ public class Allergies {
 	@GeneratedValue
 	private Long id;
 	private String libelle;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private Set<Participant> participant;
 	
 	public Allergies() {

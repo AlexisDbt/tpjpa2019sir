@@ -8,18 +8,18 @@ public class Sondage {
 	
 	@Id
 	@GeneratedValue
-	private long id;
+	private int id;
 	private String lienWeb;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
 	private Participant createur;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.MERGE)
 	private Reunion reunion;
 	
 	public Sondage() {
 		
 	}
 	
-	public Sondage (Long id, Participant createur, String lienWeb, Reunion reunion) {
+	public Sondage (int id, Participant createur, String lienWeb, Reunion reunion) {
 		this.createur = createur;
 		this.id = id;
 		this.lienWeb = lienWeb;
@@ -34,7 +34,7 @@ public class Sondage {
 		return createur;
 	}
 	
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	

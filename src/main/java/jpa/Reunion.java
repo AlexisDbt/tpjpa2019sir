@@ -16,15 +16,15 @@ public class Reunion {
 	private String intitule;
 	private String resume;
 	private Date date;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private Set<Participant> invites;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private Set<Participant> participants;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private Set<Participant> peigneCuls;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.MERGE)
 	private Sondage sondage;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Mail mail;
 	
 	public Reunion() {

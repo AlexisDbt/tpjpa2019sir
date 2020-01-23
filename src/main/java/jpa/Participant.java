@@ -3,9 +3,6 @@ package jpa;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.*;
 
 @Entity
@@ -13,19 +10,18 @@ import javax.persistence.*;
 public class Participant {
 
 	@Id
-	@GeneratedValue
 	private String email;
 	private String nom;
 	private String prenom;
-	@OneToMany(mappedBy="createur")
+	@OneToMany(mappedBy="createur", cascade = CascadeType.MERGE)
 	private Set<Sondage> sondage;
-	@ManyToMany(mappedBy="participants")
+	@ManyToMany(mappedBy="participants", cascade = CascadeType.ALL)
 	private Set<Reunion> reunion;
-	@ManyToMany(mappedBy="participant")	
+	@ManyToMany(mappedBy="participant", cascade = CascadeType.ALL)	
 	private Set<Preferences> preferences;
-	@ManyToMany(mappedBy="participant")
+	@ManyToMany(mappedBy="participant", cascade = CascadeType.ALL)
 	private Set<Allergies> allergies;
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	private Mail mail;
 	
 	public Participant() {
@@ -99,12 +95,11 @@ public class Participant {
 		return preferences;
 	}
 	
-	/**public void setMail(Mail mail) {
+	public void setMail(Mail mail) {
 		this.mail = mail;
 	}
 	
-	@OneToOne
 	public Mail getMail() {
 		return mail;
-	}*/
+	}
 }
