@@ -40,7 +40,7 @@ public class JpaTest {
 		//		factory.close();
 		 * 
 		 */
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("dev");
+			EntityManagerFactory factory = Persistence.createEntityManagerFactory("dev");
 			EntityManager manager = factory.createEntityManager();
 			JpaTest test = new JpaTest(manager);
 
