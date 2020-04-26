@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="tpjpa2019sir:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>tpjpa2019sir</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="testjpa-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="tpjpa2019sir:war exploded" />
+    </root>
+  </artifact>
+</component>
