@@ -1,6 +1,6 @@
 package fr.istic.sir.rest;
 
-import jpa.Reunion;
+import entities.Reunion;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

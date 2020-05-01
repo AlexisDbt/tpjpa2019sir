@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import jpa.JpaTest;
-import jpa.Participant;
+import entities.Participant;
 
 @WebServlet(name = "infosparticipants", urlPatterns = { "/InfosParticipants" })
 public class InfosParticipants extends HttpServlet {
