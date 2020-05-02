@@ -1,7 +1,8 @@
 package entities;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
+
 
 import javax.persistence.*;
 
@@ -15,9 +16,9 @@ public class Participant {
 	private String prenom;
 	private String allergie;
 	private String preferenceAlim;
-	private Set<Sondage> sondage;
-	private Set<Reunion> reunion;
-	private Mail mail;
+	private Mail mail = new Mail();
+	private List<Sondage> sondage = new ArrayList<Sondage>();
+	private List<Reunion> reunion = new ArrayList<Reunion>();
 	
 	public Participant() {
 		
@@ -27,9 +28,6 @@ public class Participant {
 		this.email = email;
 		this.nom = nom;
 		this.prenom = prenom;
-		reunion = new HashSet<Reunion>();
-		sondage = new HashSet<Sondage>();
-		mail = new Mail();
 	}
 	
 	public void setEmail(String email) {
@@ -56,33 +54,45 @@ public class Participant {
 		return prenom;
 	}
 
-	public String getAllergie() { return allergie;	}
+	public String getAllergie() {
+		return allergie;
+	}
 
-	public void setAllergie(String allergie) { this.allergie = allergie; }
+	public void setAllergie(String allergie) {
+		this.allergie = allergie;
+	}
 
-	public String getPreferenceAlim() { return preferenceAlim; }
+	public String getPreferenceAlim() {
+		return preferenceAlim;
+	}
 
-	public void setPreferenceAlim(String preferenceAlim) { this.preferenceAlim = preferenceAlim; }
+	public void setPreferenceAlim(String preferenceAlim) {
+		this.preferenceAlim = preferenceAlim;
+	}
 
-	@OneToMany(mappedBy="createur", cascade = CascadeType.MERGE)
-	public Set<Sondage> getSondage() {
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="createur", cascade = CascadeType.PERSIST)
+	public List<Sondage> getSondage() {
 		return sondage;
 	}
 
-	public void setSondage(Set<Sondage> sondage) {
+	public void setSondage(List<Sondage> sondage) {
 		this.sondage = sondage;
 	}
 
-	@ManyToMany(mappedBy="participants", cascade = CascadeType.ALL)
-	public Set<Reunion> getReunion() {
+	@ManyToMany
+	@JoinTable(
+			name="participants_reunions",
+			joinColumns = @JoinColumn(name="participant_id"),
+			inverseJoinColumns = @JoinColumn(name="reunion_id"))
+	public List<Reunion> getReunion() {
 		return reunion;
 	}
 
-	public void setReunion(Set<Reunion> reunion) {
+	public void setReunion(List<Reunion> reunion) {
 		this.reunion = reunion;
 	}
 
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	public Mail getMail() {
 		return mail;
 	}

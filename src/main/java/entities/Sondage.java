@@ -1,6 +1,8 @@
 package entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="Sondage")
@@ -11,25 +13,23 @@ public class Sondage {
 	private int id;
 	private String lienWeb;
 	private Participant createur;
-	@OneToOne(cascade = CascadeType.MERGE)
 	private Reunion reunion;
+	private List<ReponseSondage> reponses = new ArrayList<ReponseSondage>();
 	
 	public Sondage() {
 		
 	}
 	
-	public Sondage (int id, Participant createur, String lienWeb, Reunion reunion) {
+	public Sondage (Participant createur, String lienWeb) {
 		this.createur = createur;
-		this.id = id;
 		this.lienWeb = lienWeb;
-		this.reunion = reunion;
 	}
 	
 	public void setCreateur(Participant createur) {
 		this.createur = createur;
 	}
 
-	@ManyToOne(cascade = CascadeType.MERGE)
+	@ManyToOne(fetch = FetchType.LAZY)
 	public Participant getCreateur() {
 		return createur;
 	}
@@ -38,7 +38,9 @@ public class Sondage {
 		this.id = id;
 	}
 
-	public long getId() { return id; }
+	public long getId() {
+		return id;
+	}
 	
 	public void setLienWeb(String lienWeb) {
 		this.lienWeb = lienWeb;
@@ -54,5 +56,14 @@ public class Sondage {
 	
 	public Reunion getReunion() {
 		return reunion;
+	}
+
+	@OneToMany(cascade = CascadeType.PERSIST, mappedBy = "sondage", fetch = FetchType.LAZY)
+	public List<ReponseSondage> getReponses() {
+		return reponses;
+	}
+
+	public void setReponses(List<ReponseSondage> reponses) {
+		this.reponses = reponses;
 	}
 }

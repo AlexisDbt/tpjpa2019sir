@@ -1,8 +1,6 @@
 package entities;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import javax.persistence.*;
 
@@ -15,25 +13,21 @@ public class Reunion {
 	private int id;
 	private String intitule;
 	private String resume;
+	@Temporal(TemporalType.DATE)
 	private Date date;
-	private Set<Participant> invites;
-	private Set<Participant> participants;
-	private Set<Participant> absents;
-	private Sondage sondage;
-	private Mail mail;
+	private List<Participant> invites = new ArrayList<Participant>();
+	private List<Participant> participants = new ArrayList<Participant>();
+	private List<Participant> absents = new ArrayList<Participant>();
+	private Sondage sondage =  new Sondage();
+	private Mail mail = new Mail();
 	
 	public Reunion() {
 		
 	}
 	
-	public Reunion(int id, String intitule, String resume, Date date){
+	public Reunion(String intitule, String resume){
 		this.intitule = intitule;
 		this.resume = resume;
-		this.date = date;
-		this.invites = new HashSet<Participant>();
-		this.participants = new HashSet<Participant>();
-		this.absents = new HashSet<Participant>();
-		sondage = new Sondage();
 	}
 	
 	public void setId(int id) {
@@ -60,30 +54,30 @@ public class Reunion {
 		return intitule;
 	}
 	
-	public void setInvites(Set<Participant> invites) {
+	public void setInvites(List<Participant> invites) {
 		this.invites = invites;
 	}
 
-	@ManyToMany(cascade = CascadeType.ALL)
-	public Set<Participant> getInvites() {
+	@ManyToMany(cascade = CascadeType.PERSIST, mappedBy = "reunion", fetch = FetchType.LAZY)
+	public List<Participant> getInvites() {
 		return invites;
 	}
 	
-	public void setParticipants(Set<Participant> participants) {
+	public void setParticipants(List<Participant> participants) {
 		this.participants = participants;
 	}
 
-	@ManyToMany(cascade = CascadeType.ALL)
-	public Set<Participant> getParticipants() {
+	@ManyToMany(cascade = CascadeType.PERSIST, mappedBy = "reunion", fetch = FetchType.LAZY)
+	public List<Participant> getParticipants() {
 		return participants;
 	}
 	
-	public void setPeigneCuls(Set<Participant> peigneCuls) {
-		this.absents = peigneCuls;
+	public void setAbsents(List<Participant> absents) {
+		this.absents = absents;
 	}
 
-	@ManyToMany(cascade = CascadeType.ALL)
-	public Set<Participant> getPeigneCuls() {
+	@ManyToMany(cascade = CascadeType.PERSIST, mappedBy = "reunion", fetch = FetchType.LAZY)
+	public List<Participant> getAbsents() {
 		return absents;
 	}
 	
@@ -99,13 +93,17 @@ public class Reunion {
 		this.sondage = sondage;
 	}
 
-	@OneToOne(cascade = CascadeType.MERGE)
+	@OneToOne(cascade = CascadeType.PERSIST)
 	public Sondage getSondage() {
 		return sondage;
 	}
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	public Mail getMail() { return mail; }
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	public Mail getMail() {
+		return mail;
+	}
 
-	public void setMail(Mail mail) { this.mail = mail; }
+	public void setMail(Mail mail) {
+		this.mail = mail;
+	}
 }
