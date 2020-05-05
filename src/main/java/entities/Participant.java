@@ -94,7 +94,7 @@ public class Participant {
 
 	@ManyToMany(cascade=CascadeType.PERSIST)
 	@JoinTable(
-			name = "participants_mails",
+			name = "participant_mail",
 			joinColumns = @JoinColumn(name = "participant_id"),
 			inverseJoinColumns = @JoinColumn(name = "mail_id"))
 	public List<Mail> getMail() {

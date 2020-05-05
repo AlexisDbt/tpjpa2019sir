@@ -8,35 +8,18 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 public class JpaTest {
-	
-	private EntityManager manager;
 
-	public JpaTest(EntityManager manager) {
-		this.manager = manager;
-	}
+	static EntityManager manager = EntityManagerHelper.getEntityManager();
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 
-		/**EntityManager manager = EntityManagerHelper.getEntityManager();
-		JpaTest test = new JpaTest(manager);
-		EntityTransaction tx = manager.getTransaction();
-		tx.begin();
-		EntityManagerHelper.closeEntityManagerFactory();
-		factory.close();
-		 */
-
-		//EntityManagerFactory factory = Persistence.createEntityManagerFactory("dev");
-		//EntityManager manager = factory.createEntityManager();
-		EntityManager manager = EntityManagerHelper.getEntityManager();
-		JpaTest test = new JpaTest(manager);
-
 		EntityTransaction tx = manager.getTransaction();
 		tx.begin();
 		try {
-			test.createParticipant();
+			createParticipant();
 			//test.createSondage();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -45,12 +28,12 @@ public class JpaTest {
 
 		manager.close();
 		EntityManagerHelper.closeEntityManagerFactory();
-		System.out.println(".. done");
+		//System.out.println(".. done");
 		
 	}
 	
 	
-	public void createParticipant() {
+	private static void createParticipant() {
 		int numPart = manager.createQuery("Select a From Participant a", Participant.class).getResultList().size();
 		if(numPart == 0) {
 			manager.persist(new Participant("elise.chapon@gmail.com", "Chap", "on"));

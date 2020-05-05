@@ -1,4 +1,4 @@
-package servlet;
+/**package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -28,7 +28,7 @@ public class InfosParticipants extends HttpServlet {
 		
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("dev");
 		EntityManager manager = factory.createEntityManager();
-		JpaTest test = new JpaTest(manager);
+		JpaTest test = new JpaTest();
 
 		EntityTransaction tx = manager.getTransaction();
 		tx.begin();
@@ -90,4 +90,4 @@ public class InfosParticipants extends HttpServlet {
 	}
 	
 
-}
+}*/
