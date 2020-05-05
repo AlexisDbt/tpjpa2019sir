@@ -19,6 +19,10 @@ public class ReponseSondage {
         this.sondage = sondage;
     }
 
+    public ReponseSondage(){
+
+    }
+
     public int getId() {
         return id;
     }
@@ -51,7 +55,7 @@ public class ReponseSondage {
         this.email = email;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     public Sondage getSondage() {
         return sondage;
     }

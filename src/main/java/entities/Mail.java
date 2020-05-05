@@ -10,7 +10,7 @@ import java.util.Set;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Mail")
+//@Table(name="Mail")
 public class Mail {
 
 	private List<Participant> participant = new ArrayList<Participant>();
@@ -56,7 +56,7 @@ public class Mail {
 		this.lienPause = lienPause;
 	}
 
-	@OneToMany(cascade = CascadeType.PERSIST, mappedBy = "mail", fetch = FetchType.LAZY)
+	@ManyToMany(cascade = CascadeType.PERSIST, mappedBy = "mail", fetch = FetchType.LAZY)
 	public List<Participant> getParticipant() {
 		return participant;
 	}

@@ -7,7 +7,7 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Participant")
+//@Table(name="Participant")
 public class Participant {
 
 	@Id
@@ -16,7 +16,7 @@ public class Participant {
 	private String prenom;
 	private String allergie;
 	private String preferenceAlim;
-	private Mail mail = new Mail();
+	private List<Mail> mail = new ArrayList<Mail>();
 	private List<Sondage> sondage = new ArrayList<Sondage>();
 	private List<Reunion> reunion = new ArrayList<Reunion>();
 	
@@ -92,12 +92,16 @@ public class Participant {
 		this.reunion = reunion;
 	}
 
-	@ManyToOne(cascade=CascadeType.PERSIST)
-	public Mail getMail() {
+	@ManyToMany(cascade=CascadeType.PERSIST)
+	@JoinTable(
+			name = "participants_mails",
+			joinColumns = @JoinColumn(name = "participant_id"),
+			inverseJoinColumns = @JoinColumn(name = "mail_id"))
+	public List<Mail> getMail() {
 		return mail;
 	}
 
-	public void setMail(Mail mail) {
+	public void setMail(List<Mail> mail) {
 		this.mail = mail;
 	}
 }

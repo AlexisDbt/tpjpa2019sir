@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="prod/Hibernate" uuid="a7f8dbf7-3c9a-4e5b-af30-b6a9c38beb46">
+      <driver-ref>hsqldb.remote</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate
+
+C:/Users/celie/IdeaProjects/tpjpa2019sir/src/main/resources/META-INF/persistence.xml</remarks>
+      <jdbc-driver>org.hsqldb.jdbcDriver</jdbc-driver>
+      <jdbc-url>jdbc:hsqldb:hsql://localhost/</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="dev/Hibernate" uuid="7270ccf8-686f-4d05-b074-f6058dfda36a">
+      <driver-ref>hsqldb.remote</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate
+
+C:/Users/celie/IdeaProjects/tpjpa2019sir/src/main/resources/META-INF/persistence.xml</remarks>
+      <jdbc-driver>org.hsqldb.jdbcDriver</jdbc-driver>
+      <jdbc-url>jdbc:hsqldb:hsql://localhost/</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="mysql/Hibernate" uuid="9a36e4fe-b3c1-4ec5-90ad-792b83a548fc">
+      <driver-ref>mysql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate
+
+C:/Users/celie/IdeaProjects/tpjpa2019sir/src/main/resources/META-INF/persistence.xml</remarks>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost/testsir</jdbc-url>
+    </data-source>
+  </component>
+</project>

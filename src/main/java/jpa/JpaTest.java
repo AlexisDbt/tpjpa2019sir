@@ -9,7 +9,7 @@ import javax.persistence.Persistence;
 
 public class JpaTest {
 	
-	private static EntityManager manager;
+	private EntityManager manager;
 
 	public JpaTest(EntityManager manager) {
 		this.manager = manager;
@@ -28,8 +28,9 @@ public class JpaTest {
 		factory.close();
 		 */
 
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("dev");
-		EntityManager manager = factory.createEntityManager();
+		//EntityManagerFactory factory = Persistence.createEntityManagerFactory("dev");
+		//EntityManager manager = factory.createEntityManager();
+		EntityManager manager = EntityManagerHelper.getEntityManager();
 		JpaTest test = new JpaTest(manager);
 
 		EntityTransaction tx = manager.getTransaction();
@@ -42,8 +43,8 @@ public class JpaTest {
 		}
 		tx.commit();
 
-
 		manager.close();
+		EntityManagerHelper.closeEntityManagerFactory();
 		System.out.println(".. done");
 		
 	}
@@ -53,7 +54,7 @@ public class JpaTest {
 		int numPart = manager.createQuery("Select a From Participant a", Participant.class).getResultList().size();
 		if(numPart == 0) {
 			manager.persist(new Participant("elise.chapon@gmail.com", "Chap", "on"));
-			manager.persist(new Participant("grossesalope@connasse.com", "Nan", "ou"));
+			manager.persist(new Participant("nanou@bn.com", "Nan", "ou"));
 			manager.persist(new Participant("florentlaquiche@bn.com", "Quiche", "Florent"));
 		}
 	}

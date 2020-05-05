@@ -13,9 +13,9 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <datasource-mapping>
-          <factory-entry name="dev" />
-          <factory-entry name="mysql" />
-          <factory-entry name="prod" />
+          <factory-entry name="dev" value="7270ccf8-686f-4d05-b074-f6058dfda36a" />
+          <factory-entry name="mysql" value="9a36e4fe-b3c1-4ec5-90ad-792b83a548fc" />
+          <factory-entry name="prod" value="a7f8dbf7-3c9a-4e5b-af30-b6a9c38beb46" />
         </datasource-mapping>
         <naming-strategy-map />
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
