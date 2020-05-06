@@ -16,12 +16,12 @@ public class ParticipantDAO {
     }
 
     public List<Participant> participantsNom(String nom) {
-        return em.createQuery("SELECT id, email, prenom FROM Participant p WHERE p.nom = :nom", Participant.class)
+        return em.createQuery("SELECT email, prenom FROM Participant p WHERE p.nom = :nom", Participant.class)
                 .setParameter("nom", nom).getResultList();
     }
 
     public List<Participant> participantsPrenom(String prenom) {
-        return em.createQuery("SELECT id, email, nom FROM Participant p WHERE p.prenom = :prenom", Participant.class)
+        return em.createQuery("SELECT p FROM Participant p WHERE p.prenom = :prenom", Participant.class)
                 .setParameter("prenom", prenom).getResultList();
     }
 

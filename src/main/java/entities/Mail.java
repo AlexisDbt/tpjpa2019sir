@@ -16,7 +16,7 @@ public class Mail {
 	private String lienPause;
 	private String code;
 	private String lienPad;
-	private Long id;
+	private int id;
 	
 	public Mail() {
 		
@@ -70,13 +70,13 @@ public class Mail {
 		this.reunions = reunions;
 	}
 	
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
 	@Id
 	@GeneratedValue
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 }

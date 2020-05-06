@@ -23,12 +23,10 @@ public class Participant {
 		
 	}
 	
-	public Participant (String email, String nom, String prenom, String allergie, String prefAlim) {
+	public Participant (String email, String nom, String prenom) {
 		this.email = email;
 		this.nom = nom;
 		this.prenom = prenom;
-		this.allergie = allergie;
-		this.preferenceAlim = prefAlim;
 	}
 	
 	public void setEmail(String email) {

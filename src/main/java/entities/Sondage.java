@@ -11,6 +11,7 @@ public class Sondage {
 	private Participant creat;
 	private Reunion reunion;
 	private List<ReponseSondage> reponses = new ArrayList<ReponseSondage>();
+	private List<Propositions> propositions = new ArrayList<Propositions>();
 	
 	public Sondage() {
 		
@@ -32,7 +33,7 @@ public class Sondage {
 
 	@Id
 	@GeneratedValue
-	public long getId() { return id; }
+	public int getId() { return id; }
 
 	public void setId(int id) { this.id = id; }
 	
@@ -55,4 +56,13 @@ public class Sondage {
 	public List<ReponseSondage> getReponses() { return reponses; }
 
 	public void setReponses(List<ReponseSondage> reponses) { this.reponses = reponses; }
+
+	@OneToMany(cascade = CascadeType.PERSIST, mappedBy = "sondage", fetch = FetchType.LAZY)
+	public List<Propositions> getPropositions() {
+		return propositions;
+	}
+
+	public void setPropositions(List<Propositions> propositions) {
+		this.propositions = propositions;
+	}
 }
