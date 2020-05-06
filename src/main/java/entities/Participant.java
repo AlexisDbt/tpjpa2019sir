@@ -4,36 +4,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+import javax.naming.Name;
 import javax.persistence.*;
 
 @Entity
-//@Table(name="Participant")
 public class Participant {
 
-	@Id
 	private String email;
 	private String nom;
 	private String prenom;
 	private String allergie;
 	private String preferenceAlim;
-	private List<Mail> mail = new ArrayList<Mail>();
-	private List<Sondage> sondage = new ArrayList<Sondage>();
-	private List<Reunion> reunion = new ArrayList<Reunion>();
+	private List<Mail> mails = new ArrayList<Mail>();
+	private List<Sondage> sondages = new ArrayList<Sondage>();
+	private List<Reunion> reunions = new ArrayList<Reunion>();
 	
 	public Participant() {
 		
 	}
 	
-	public Participant (String email, String nom, String prenom) {
+	public Participant (String email, String nom, String prenom, String allergie, String prefAlim) {
 		this.email = email;
 		this.nom = nom;
 		this.prenom = prenom;
+		this.allergie = allergie;
+		this.preferenceAlim = prefAlim;
 	}
 	
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
+	@Id
 	public String getEmail() {
 		return email;
 	}
@@ -70,38 +72,30 @@ public class Participant {
 		this.preferenceAlim = preferenceAlim;
 	}
 
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="createur", cascade = CascadeType.PERSIST)
-	public List<Sondage> getSondage() {
-		return sondage;
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="creat", cascade = CascadeType.PERSIST)
+	public List<Sondage> getSondages() {
+		return sondages;
 	}
 
-	public void setSondage(List<Sondage> sondage) {
-		this.sondage = sondage;
+	public void setSondages(List<Sondage> sondages) {
+		this.sondages = sondages;
 	}
 
 	@ManyToMany
-	@JoinTable(
-			name="participants_reunions",
+	/*@JoinTable(
+			name="participant_reunions",
 			joinColumns = @JoinColumn(name="participant_id"),
-			inverseJoinColumns = @JoinColumn(name="reunion_id"))
-	public List<Reunion> getReunion() {
-		return reunion;
-	}
+			inverseJoinColumns = @JoinColumn(name="reunion_id"))*/
+	public List<Reunion> getReunions() { return reunions; }
 
-	public void setReunion(List<Reunion> reunion) {
-		this.reunion = reunion;
-	}
+	public void setReunions(List<Reunion> reunions) { this.reunions = reunions; }
 
-	@ManyToMany(cascade=CascadeType.PERSIST)
-	@JoinTable(
+	@ManyToMany
+	/*@JoinTable(
 			name = "participant_mail",
-			joinColumns = @JoinColumn(name = "participant_id"),
-			inverseJoinColumns = @JoinColumn(name = "mail_id"))
-	public List<Mail> getMail() {
-		return mail;
-	}
+			joinColumns = @JoinColumn(name = "email"),
+			inverseJoinColumns = @JoinColumn(name = "mail_id"))*/
+	public List<Mail> getMails() { return mails; }
 
-	public void setMail(List<Mail> mail) {
-		this.mail = mail;
-	}
+	public void setMails(List<Mail> mails) { this.mails = mails; }
 }

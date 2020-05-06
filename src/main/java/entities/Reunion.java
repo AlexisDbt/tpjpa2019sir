@@ -5,19 +5,13 @@ import java.util.*;
 import javax.persistence.*;
 
 @Entity
-//@Table(name="Reunion")
 public class Reunion {
-	
-	@Id
-	@GeneratedValue
 	private int id;
 	private String intitule;
 	private String resume;
 	@Temporal(TemporalType.DATE)
 	private Date date;
-	private List<Participant> invites = new ArrayList<Participant>();
 	private List<Participant> participants = new ArrayList<Participant>();
-	private List<Participant> absents = new ArrayList<Participant>();
 	private Sondage sondage =  new Sondage();
 	private Mail mail = new Mail();
 	
@@ -33,7 +27,9 @@ public class Reunion {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
+	@Id
+	@GeneratedValue
 	public int getId() {
 		return id;
 	}
@@ -54,31 +50,13 @@ public class Reunion {
 		return intitule;
 	}
 	
-	public void setInvites(List<Participant> invites) {
-		this.invites = invites;
-	}
-
-	@ManyToMany(cascade = CascadeType.PERSIST, mappedBy = "reunion", fetch = FetchType.LAZY)
-	public List<Participant> getInvites() {
-		return invites;
-	}
-	
 	public void setParticipants(List<Participant> participants) {
 		this.participants = participants;
 	}
 
-	@ManyToMany(cascade = CascadeType.PERSIST, mappedBy = "reunion", fetch = FetchType.LAZY)
+	@ManyToMany(cascade = CascadeType.PERSIST, mappedBy = "reunions", fetch = FetchType.LAZY)
 	public List<Participant> getParticipants() {
 		return participants;
-	}
-	
-	public void setAbsents(List<Participant> absents) {
-		this.absents = absents;
-	}
-
-	@ManyToMany(cascade = CascadeType.PERSIST, mappedBy = "reunion", fetch = FetchType.LAZY)
-	public List<Participant> getAbsents() {
-		return absents;
 	}
 	
 	public void setResume(String resume) {

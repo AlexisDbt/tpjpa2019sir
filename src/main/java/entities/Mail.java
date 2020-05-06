@@ -10,16 +10,12 @@ import java.util.Set;
 import javax.persistence.*;
 
 @Entity
-//@Table(name="Mail")
 public class Mail {
-
 	private List<Participant> participant = new ArrayList<Participant>();
-	private List<Reunion> reunion = new ArrayList<Reunion>();
+	private List<Reunion> reunions = new ArrayList<Reunion>();
 	private String lienPause;
 	private String code;
 	private String lienPad;
-	@Id
-	@GeneratedValue
 	private Long id;
 	
 	public Mail() {
@@ -56,7 +52,7 @@ public class Mail {
 		this.lienPause = lienPause;
 	}
 
-	@ManyToMany(cascade = CascadeType.PERSIST, mappedBy = "mail", fetch = FetchType.LAZY)
+	@ManyToMany(mappedBy = "mails")
 	public List<Participant> getParticipant() {
 		return participant;
 	}
@@ -66,18 +62,20 @@ public class Mail {
 	}
 
 	@OneToMany(cascade = CascadeType.PERSIST, mappedBy = "mail", fetch = FetchType.LAZY)
-	public List<Reunion> getReunion() {
-		return reunion;
+	public List<Reunion> getReunions() {
+		return reunions;
 	}
 
-	public void setReunion(List<Reunion> reunion) {
-		this.reunion = reunion;
+	public void setReunions(List<Reunion> reunions) {
+		this.reunions = reunions;
 	}
 	
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
+	@Id
+	@GeneratedValue
 	public Long getId() {
 		return id;
 	}

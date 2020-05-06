@@ -36,9 +36,9 @@ public class JpaTest {
 	private static void createParticipant() {
 		int numPart = manager.createQuery("Select a From Participant a", Participant.class).getResultList().size();
 		if(numPart == 0) {
-			manager.persist(new Participant("elise.chapon@gmail.com", "Chap", "on"));
-			manager.persist(new Participant("nanou@bn.com", "Nan", "ou"));
-			manager.persist(new Participant("florentlaquiche@bn.com", "Quiche", "Florent"));
+			manager.persist(new Participant("elise.chapon@gmail.com", "Chap", "on", "oeufs", ""));
+			manager.persist(new Participant("nanou@bn.com", "Nan", "ou", "", "sans gluten"));
+			manager.persist(new Participant("florentlaquiche@bn.com", "Quiche", "Florent", "", ""));
 		}
 	}
 	/*
@@ -49,7 +49,6 @@ public class JpaTest {
 			Date date = new Date();
 			Reunion reu = new Reunion(1, "ma reunion", "voila ma reunion", date);
 			manager.persist(new Sondage(3, p1 , "lien", reu));
-			manager.persist(new Participant("grossesalope@connasse.com", "Nan", "ou"));
 			manager.persist(new Participant("florentlaquiche@bn.com", "Quiche", "Florent"));
 		}
 	}*/

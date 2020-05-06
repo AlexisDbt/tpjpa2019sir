@@ -4,8 +4,6 @@ import javax.persistence.*;
 
 @Entity
 public class ReponseSondage {
-    @Id
-    @GeneratedValue
     private int id;
     private String nom;
     private String prenom;
@@ -23,6 +21,8 @@ public class ReponseSondage {
 
     }
 
+    @Id
+    @GeneratedValue
     public int getId() {
         return id;
     }

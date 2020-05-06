@@ -5,14 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-//@Table(name="Sondage")
 public class Sondage {
-
-	@Id
-	@GeneratedValue
 	private int id;
 	private String lienWeb;
-	private Participant createur;
+	private Participant creat;
 	private Reunion reunion;
 	private List<ReponseSondage> reponses = new ArrayList<ReponseSondage>();
 	
@@ -20,27 +16,25 @@ public class Sondage {
 		
 	}
 	
-	public Sondage (Participant createur, String lienWeb) {
-		this.createur = createur;
+	public Sondage (Participant creat, String lienWeb) {
+		this.creat = creat;
 		this.lienWeb = lienWeb;
 	}
 	
-	public void setCreateur(Participant createur) {
-		this.createur = createur;
+	public void setCreat(Participant creat) {
+		this.creat = creat;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	public Participant getCreateur() {
-		return createur;
+	public Participant getCreat() {
+		return creat;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
+	@Id
+	@GeneratedValue
+	public long getId() { return id; }
 
-	public long getId() {
-		return id;
-	}
+	public void setId(int id) { this.id = id; }
 	
 	public void setLienWeb(String lienWeb) {
 		this.lienWeb = lienWeb;
@@ -53,17 +47,12 @@ public class Sondage {
 	public void setReunion(Reunion reunion) {
 		this.reunion = reunion;
 	}
-	
-	public Reunion getReunion() {
-		return reunion;
-	}
+
+	@OneToOne(mappedBy="sondage")
+	public Reunion getReunion() { return reunion; }
 
 	@OneToMany(cascade = CascadeType.PERSIST, mappedBy = "sondage", fetch = FetchType.LAZY)
-	public List<ReponseSondage> getReponses() {
-		return reponses;
-	}
+	public List<ReponseSondage> getReponses() { return reponses; }
 
-	public void setReponses(List<ReponseSondage> reponses) {
-		this.reponses = reponses;
-	}
+	public void setReponses(List<ReponseSondage> reponses) { this.reponses = reponses; }
 }
