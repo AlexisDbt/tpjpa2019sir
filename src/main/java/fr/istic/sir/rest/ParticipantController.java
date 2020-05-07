@@ -23,6 +23,10 @@ public class ParticipantController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Participant> getAllParticipants(){
-        return partDao.allParticipants();
+        List<Participant> participants = partDao.allParticipants();
+        for(Participant p : participants){
+            p.setSondages(null);
+        }
+        return participants;
     }
 }

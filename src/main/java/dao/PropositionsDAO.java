@@ -22,7 +22,7 @@ public class PropositionsDAO {
         return em.createQuery("select p from Propositions p where p.date = :date", Propositions.class).setParameter("date", date).getResultList();
     }
 
-    /**public List<Propositions>  propositionsBySondage(int idSondage){
-        return em.createQuery("select s.id from Sondage s where s.id = :idSondage")
-    }*/
+    public List<Propositions> propositionsBySondage(int idSondage){
+        return em.createQuery("select p from Propositions p where p.sondage.id = :idSondage", Propositions.class).setParameter("idSondage", idSondage).getResultList();
+    }
 }
