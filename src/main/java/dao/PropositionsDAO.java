@@ -21,4 +21,8 @@ public class PropositionsDAO {
     public List<Propositions> propositionsByDate(Date date){
         return em.createQuery("select p from Propositions p where p.date = :date", Propositions.class).setParameter("date", date).getResultList();
     }
+
+    /**public List<Propositions>  propositionsBySondage(int idSondage){
+        return em.createQuery("select s.id from Sondage s where s.id = :idSondage")
+    }*/
 }

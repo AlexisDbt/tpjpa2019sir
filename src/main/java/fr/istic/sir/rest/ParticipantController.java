@@ -15,22 +15,14 @@ import java.util.List;
 @Path("/participants")
 public class ParticipantController {
     private ParticipantDAO partDao;
-    private PropositionsDAO propDao;
 
     public ParticipantController(){
         partDao = new ParticipantDAO();
-        propDao = new PropositionsDAO();
     }
-
-    /**@GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Participant> getAllParticipants(){
-        return partDao.allParticipants();
-    }*/
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Propositions> getAllDatesPropositions(){
-        return propDao.allPropositions();
+    public List<Participant> getAllParticipants(){
+        return partDao.allParticipants();
     }
 }

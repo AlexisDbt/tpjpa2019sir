@@ -69,8 +69,14 @@ public class JpaTest {
         Reunion r1 = new Reunion("reunion1", "plan de deconfinement");
         Reunion r2 = new Reunion("reunion2", "");
 
+        manager.persist(r1);
+        manager.persist(r2);
+
         Sondage s1 = new Sondage(p1, "oui.lien");
         Propositions pr1 = new Propositions(new Date(), s1);
+
+        manager.persist(s1);
+        manager.persist(pr1);
 
     }
 

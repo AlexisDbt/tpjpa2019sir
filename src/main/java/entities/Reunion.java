@@ -12,13 +12,12 @@ public class Reunion {
 	@Temporal(TemporalType.DATE)
 	private Date date;
 	private List<Participant> participants = new ArrayList<Participant>();
-	private Sondage sondage =  new Sondage();
 	private Mail mail = new Mail();
 	
 	public Reunion() {
 		
 	}
-	
+
 	public Reunion(String intitule, String resume){
 		this.intitule = intitule;
 		this.resume = resume;
@@ -65,15 +64,6 @@ public class Reunion {
 	
 	public String getResume() {
 		return resume;
-	}
-
-	public void setSondage(Sondage sondage) {
-		this.sondage = sondage;
-	}
-
-	@OneToOne(cascade = CascadeType.PERSIST)
-	public Sondage getSondage() {
-		return sondage;
 	}
 
 	@ManyToOne(cascade = CascadeType.PERSIST)
