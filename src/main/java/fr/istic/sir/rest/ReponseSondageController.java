@@ -21,7 +21,7 @@ public class ReponseSondageController {
     @Path("/responses")
     @Produces(MediaType.APPLICATION_JSON)
     public List<ReponseSondage> getAllResponses(){
-        List<ReponseSondage> rep = dao.allReponseSondage();
+        List<ReponseSondage> rep = dao.allReponsesSondage();
         for (ReponseSondage r : rep) {
             r.setSondage(null);
         }
