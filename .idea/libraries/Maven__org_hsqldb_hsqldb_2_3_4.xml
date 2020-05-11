@@ -3,6 +3,7 @@
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/org/hsqldb/hsqldb/2.3.4/hsqldb-2.3.4.jar!/" />
     </CLASSES>
+    <JAVADOC />
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/org/hsqldb/hsqldb/2.3.4/hsqldb-2.3.4-sources.jar!/" />
     </SOURCES>
