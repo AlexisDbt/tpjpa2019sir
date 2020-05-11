@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {UserService} from "../../../services/user.service";
+import {Participants} from "../../../interface/participants";
 
 @Component({
   selector: 'app-list-user',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListUserComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
-  ngOnInit(): void {
+  userList: Participants[] = [];
+
+  ngOnInit() {
+    this.userService.getAllParticipants().subscribe(
+      res => {
+        this.userList = res;
+      }
+    )
   }
 
 }
