@@ -1,1 +1,16 @@
-<p>list-user works!</p>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">Nom</th>
+    <th scope="col">Prenom</th>
+    <th scope="col">Email</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of userList">
+    <td>{{ user?.nom }}</td>
+    <td>{{ user?.prenom }}</td>
+    <td>{{ user?.email }}</td>
+  </tr>
+  </tbody>
+</table>
