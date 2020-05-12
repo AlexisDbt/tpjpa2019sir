@@ -11,12 +11,12 @@ export class ListUserComponent implements OnInit {
 
   constructor(private userService: UserService) { }
 
-  userList: Participants[] = [];
+  participantList: Participants[] = [];
 
   ngOnInit() {
     this.userService.getAllParticipants().subscribe(
-      res => {
-        this.userList = res;
+      resultat => {
+        this.participantList = resultat;
       }
     )
   }

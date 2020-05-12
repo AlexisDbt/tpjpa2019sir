@@ -7,10 +7,11 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let user of userList">
-    <td>{{ user?.nom }}</td>
-    <td>{{ user?.prenom }}</td>
-    <td>{{ user?.email }}</td>
+  <tr *ngFor="let participant of participantList">
+    <td>{{ participant?.nom }}</td>
+    <td>{{ participant?.prenom }}</td>
+    <td>{{ participant?.email }}</td>
   </tr>
   </tbody>
 </table>
+

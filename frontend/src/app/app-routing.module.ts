@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ListUserComponent } from "./modules/user/list-user/list-user.component";
-import { AppComponent} from "./app.component";
+import { CommonModule} from "@angular/common";
 
 const routes: Routes = [
   {path: 'utilisateurs', loadChildren: './modules/user/user.module#UserModule' },
@@ -10,7 +10,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes),
+    CommonModule
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
