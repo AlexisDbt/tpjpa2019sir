@@ -3,7 +3,6 @@
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-entitymanager/4.3.10.Final/hibernate-entitymanager-4.3.10.Final.jar!/" />
     </CLASSES>
-    <JAVADOC />
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-entitymanager/4.3.10.Final/hibernate-entitymanager-4.3.10.Final-sources.jar!/" />
     </SOURCES>

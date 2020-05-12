@@ -10,7 +10,7 @@ export class UserService {
   userRoute: string;
 
   constructor(private http: HttpClient) {
-    this.baseRoute = 'http://localhost:9080/rest/';
+    this.baseRoute = 'http://localhost:4200/rest/';
     this.userRoute = 'participants/'
   }
 

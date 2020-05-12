@@ -1,8 +1,7 @@
 {
-  "/rest/*": {
-    "target": "http://localhost:9080",
+  "/rest": {
+    "target": "http://localhost:8081/",
     "secure": false,
-    "logLevel": "debug",
-    "changeOrigin": true
+    "logLevel": "debug"
   }
 }
