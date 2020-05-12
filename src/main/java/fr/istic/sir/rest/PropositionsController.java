@@ -12,7 +12,7 @@ import java.text.DateFormat;
 import java.util.List;
 import java.util.Locale;
 
-@Path("/sondage")
+@Path("/propositions")
 public class PropositionsController {
     private PropositionsDAO propDao;
 
