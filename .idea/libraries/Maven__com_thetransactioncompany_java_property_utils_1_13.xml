@@ -3,6 +3,7 @@
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/com/thetransactioncompany/java-property-utils/1.13/java-property-utils-1.13.jar!/" />
     </CLASSES>
+    <JAVADOC />
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/com/thetransactioncompany/java-property-utils/1.13/java-property-utils-1.13-sources.jar!/" />
     </SOURCES>
