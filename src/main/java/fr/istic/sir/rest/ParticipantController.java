@@ -1,20 +1,17 @@
 package fr.istic.sir.rest;
 
 import dao.ParticipantDAO;
-import dao.PropositionsDAO;
 import entities.Participant;
-import entities.Propositions;
+import service.UserService;
 
-import javax.print.attribute.standard.Media;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @Path("/participants/list")
 public class ParticipantController {
     private ParticipantDAO partDao;
+    private UserService service = new UserService();
 
     public ParticipantController(){
         partDao = new ParticipantDAO();
@@ -28,5 +25,12 @@ public class ParticipantController {
             p.setSondages(null);
         }
         return participants;
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Participant addParticipant(Participant participant) {
+        return this.service.createParticipant(participant);
     }
 }

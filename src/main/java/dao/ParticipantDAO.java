@@ -55,4 +55,21 @@ public class ParticipantDAO {
     public List<Participant> allParticipants(){
         return em.createQuery("select p from Participant p").getResultList();
     }
+
+    public Participant save(Participant p ){
+        if (!em.getTransaction().isActive()) {
+            em.getTransaction().begin();
+        }
+        try {
+            if (!em.getTransaction().isActive()) {
+                em.getTransaction().begin();
+            }
+            em.persist(p);
+            EntityManagerHelper.commit();
+        } catch (Exception ex) {
+            EntityManagerHelper.rollback();
+        }
+
+        return p;
+    }
 }
