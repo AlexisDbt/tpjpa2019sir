@@ -9,7 +9,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.*;
 
-@Path("/sondage")
+@Path("/reponseSondage")
 public class ReponseSondageController {
     private ReponseSondageDAO dao;
 

@@ -2,10 +2,13 @@ package entities;
 
 //import com.fasterxml.jackson.annotation.JsonFormat;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Propositions {
     private int id;
     //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")

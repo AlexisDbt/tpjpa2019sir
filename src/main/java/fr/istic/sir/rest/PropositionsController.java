@@ -2,11 +2,11 @@ package fr.istic.sir.rest;
 
 import dao.PropositionsDAO;
 import entities.Propositions;
+import entities.Reunion;
+import service.PropositionService;
+import service.ReunionService;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.text.DateFormat;
 import java.util.List;
@@ -15,6 +15,7 @@ import java.util.Locale;
 @Path("/propositions")
 public class PropositionsController {
     private PropositionsDAO propDao;
+    private PropositionService service = new PropositionService();
 
     public PropositionsController(){
         propDao = new PropositionsDAO();
@@ -32,5 +33,10 @@ public class PropositionsController {
         }
         return prop;
     }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Propositions addProposition(Propositions propositions) { return this.service.createProposition(propositions);}
 
 }

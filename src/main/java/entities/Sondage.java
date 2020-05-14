@@ -1,14 +1,17 @@
 package entities;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Sondage {
 	private int id;
 	private String lienWeb;
-	private Participant creat;
+	private Participant createur;
 	private List<ReponseSondage> reponses = new ArrayList<ReponseSondage>();
 	private List<Propositions> propositions = new ArrayList<Propositions>();
 	
@@ -16,18 +19,18 @@ public class Sondage {
 		
 	}
 	
-	public Sondage (Participant creat, String lienWeb) {
-		this.creat = creat;
+	public Sondage (Participant createur, String lienWeb) {
+		this.createur = createur;
 		this.lienWeb = lienWeb;
 	}
 	
-	public void setCreat(Participant creat) {
-		this.creat = creat;
+	public void setCreat(Participant createur) {
+		this.createur = createur;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	public Participant getCreat() {
-		return creat;
+		return createur;
 	}
 
 	@Id
@@ -57,4 +60,5 @@ public class Sondage {
 	public void setPropositions(List<Propositions> propositions) {
 		this.propositions = propositions;
 	}
+
 }

@@ -36,4 +36,21 @@ public class SondageDAO {
     public List<Sondage> allSondages() {
         return em.createQuery("SELECT s FROM Sondage s", Sondage.class).getResultList();
     }
+
+    public Sondage save(Sondage s ){
+        if (!em.getTransaction().isActive()) {
+            em.getTransaction().begin();
+        }
+        try {
+            if (!em.getTransaction().isActive()) {
+                em.getTransaction().begin();
+            }
+            em.persist(s);
+            EntityManagerHelper.commit();
+        } catch (Exception ex) {
+            EntityManagerHelper.rollback();
+        }
+
+        return s;
+    }
 }

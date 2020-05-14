@@ -1,6 +1,7 @@
 package dao;
 
 import entities.Reunion;
+import entities.Sondage;
 import jpa.EntityManagerHelper;
 
 import javax.persistence.EntityManager;
@@ -41,6 +42,23 @@ public class ReunionDAO {
 
     public List<Reunion> allReunions() {
         return em.createQuery("select r from Reunion r").getResultList();
+    }
+
+    public Reunion save(Reunion r ){
+        if (!em.getTransaction().isActive()) {
+            em.getTransaction().begin();
+        }
+        try {
+            if (!em.getTransaction().isActive()) {
+                em.getTransaction().begin();
+            }
+            em.persist(r);
+            EntityManagerHelper.commit();
+        } catch (Exception ex) {
+            EntityManagerHelper.rollback();
+        }
+
+        return r;
     }
 
 }
