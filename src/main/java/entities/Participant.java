@@ -1,13 +1,17 @@
 package entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.codehaus.jackson.map.annotate.JsonDeserialize;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
-import javax.naming.Name;
 import javax.persistence.*;
 
 @Entity
+@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
 public class Participant {
 
 	private String email;

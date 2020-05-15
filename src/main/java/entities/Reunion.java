@@ -1,5 +1,8 @@
 package entities;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import java.util.*;
 
 import javax.persistence.*;
@@ -12,6 +15,7 @@ public class Reunion {
 	@Temporal(TemporalType.DATE)
 	private Date date;
 	private List<Participant> participants = new ArrayList<Participant>();
+	@JsonIgnore
 	private Mail mail = new Mail();
 	
 	public Reunion() {
